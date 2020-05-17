@@ -1,45 +1,34 @@
-//
-//  ViewController.swift
-//  ToDo App
-//
-//  Created by Chandler Mathews on 5/15/20.
-//  Copyright © 2020 Chandler Mathews. All rights reserved.
-//
-
 import UIKit
-
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
+    var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
     
     
-    @IBOutlet weak var tableView: UITableView!
-    private var data: [String] = []
+    // MARK: - UICollectionViewDataSource protocol
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        for i in 0...100{
-            data.append("\(i)")
-        }
-        tableView.dataSource = self
+    // tell the collection view how many cells to make
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.items.count
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")! //1.
+    // make a cell for each cell index path
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let text = data[indexPath.row] //2.
+        // get a reference to our storyboard cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
         
-        cell.textLabel?.text = text //3.
+        // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        cell.myLabel.text = self.items[indexPath.item]
+        cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         
-        return cell //4.
+        return cell
     }
-
+    
+    // MARK: - UICollectionViewDelegate protocol
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
+    }
 }
-
