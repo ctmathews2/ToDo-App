@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DQp-zK-O6t">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DQp-zK-O6t">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0KB-O2-aPK">
                                     <size key="itemSize" width="50" height="50"/>
@@ -36,15 +35,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoW-S5-kDR">
-                                                    <rect key="frame" x="0.0" y="9" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoW-S5-kDR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="HoW-S5-kDR" secondAttribute="bottom" id="6BA-5x-KEO"/>
+                                            <constraint firstItem="HoW-S5-kDR" firstAttribute="top" secondItem="eOE-cr-3e0" secondAttribute="top" id="9Fc-zE-xOC"/>
+                                            <constraint firstAttribute="trailing" secondItem="HoW-S5-kDR" secondAttribute="trailing" id="SLP-bE-f8P"/>
+                                            <constraint firstItem="HoW-S5-kDR" firstAttribute="leading" secondItem="eOE-cr-3e0" secondAttribute="leading" id="XmO-Rk-77T"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="myLabel" destination="HoW-S5-kDR" id="SVU-2v-8em"/>
                                         </connections>
@@ -57,6 +61,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DQp-zK-O6t" secondAttribute="trailing" id="09L-dr-4Wf"/>
+                            <constraint firstItem="DQp-zK-O6t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3VH-bl-ZaW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DQp-zK-O6t" secondAttribute="bottom" id="7uj-PV-s5S"/>
+                            <constraint firstItem="DQp-zK-O6t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pgH-2h-Svq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
