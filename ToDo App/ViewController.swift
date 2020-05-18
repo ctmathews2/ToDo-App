@@ -21,6 +21,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         cell.myLabel.text = self.items[indexPath.item]
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 8
         
         return cell
     }
@@ -29,6 +32,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
-        print("You selected cell #\(indexPath.item)!")
+        let totalAmount = items.count+1
+        items.append("\(totalAmount)")
+        let indexPath = IndexPath(row: items.count - 1, section: 0)
+        collectionView.insertItems(at: [indexPath])
+    }
+    
+    // change background color when user touches cell
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = UIColor.red
+    }
+    
+    // change background color back when user releases touch
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = UIColor.cyan
     }
 }
