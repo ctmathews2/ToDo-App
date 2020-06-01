@@ -60,21 +60,26 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="i8r-6e-HvR"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqM-9D-OB1">
-                                <rect key="frame" x="178" y="766" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="addToList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XGY-Hf-xpb"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2VU-1n-VFH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="LvJ-ow-H5A">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lV8-lK-sHX">
+                                            <connections>
+                                                <action selector="addItem:" destination="BYZ-38-t0r" id="Zn9-N0-kF0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="addButton" destination="eqM-9D-OB1" id="Vui-2W-3mO"/>
                         <outlet property="testCollectionView" destination="DQp-zK-O6t" id="akd-2i-POZ"/>
+                        <outlet property="titleBarText" destination="LvJ-ow-H5A" id="Ua9-7A-Jhf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

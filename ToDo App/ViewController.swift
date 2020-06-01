@@ -2,9 +2,22 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
-    var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    var items = ["1", "2"]
     
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var titleBarText: UINavigationItem!
+    
+    @IBAction func addItem(_ sender: Any) {
+        let totalAmount = items.count+1
+        items.append("\(totalAmount)")
+        let indexPath = IndexPath(row: items.count - 1, section: 0)
+        testCollectionView.insertItems(at: [indexPath])
+        print("This is the right button")
+    }
+    
+    override func viewDidLoad() {
+        titleBarText.title = "Hello!"
+        super.viewDidLoad()
+    }
     
     @IBOutlet weak var testCollectionView: UICollectionView!
     // MARK: - UICollectionViewDataSource protocol
@@ -28,14 +41,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.layer.cornerRadius = 8
         
         return cell
-    }
-    
-    @IBAction func addToList(_ sender: UIButton) {
-            let totalAmount = items.count+1
-            items.append("\(totalAmount)")
-            let indexPath = IndexPath(row: items.count - 1, section: 0)
-            testCollectionView.insertItems(at: [indexPath])
-            print("This is the right button")
     }
     
     // MARK: - UICollectionViewDelegate protocol
