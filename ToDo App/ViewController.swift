@@ -6,6 +6,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBOutlet weak var titleBarText: UINavigationItem!
     
+    // New View Controller or Alert Notifaction for user input
+    // Segue? to store data
+    
     @IBAction func addItem(_ sender: Any) {
         let totalAmount = items.count+1
         items.append("\(totalAmount)")
@@ -14,6 +17,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print("This is the right button")
     }
     
+    @IBAction func nextView(_ sender: Any) {
+        performSegue(withIdentifier: "goToAddScreen", sender: self)
+    }
     override func viewDidLoad() {
         titleBarText.title = "Hello!"
         super.viewDidLoad()

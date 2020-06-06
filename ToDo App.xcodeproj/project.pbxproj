@@ -14,6 +14,7 @@
 		E009AB62246FA37A004E47AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E009AB61246FA37A004E47AD /* Assets.xcassets */; };
 		E009AB65246FA37A004E47AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E009AB63246FA37A004E47AD /* LaunchScreen.storyboard */; };
 		E009AB70246FA37B004E47AD /* ToDo_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E009AB6F246FA37B004E47AD /* ToDo_AppTests.swift */; };
+		E00BA979248B4F1D0036C2F8 /* AddInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BA978248B4F1D0036C2F8 /* AddInfoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		E009AB6B246FA37B004E47AD /* ToDo AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ToDo AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E009AB6F246FA37B004E47AD /* ToDo_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo_AppTests.swift; sourceTree = "<group>"; };
 		E009AB71246FA37B004E47AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E00BA978248B4F1D0036C2F8 /* AddInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		E009AB59246FA379004E47AD /* ToDo App */ = {
 			isa = PBXGroup;
 			children = (
+				E00BA978248B4F1D0036C2F8 /* AddInfoController.swift */,
 				E009AB5A246FA379004E47AD /* AppDelegate.swift */,
 				E009AB5C246FA379004E47AD /* ViewController.swift */,
 				E009AB5E246FA379004E47AD /* Main.storyboard */,
@@ -203,6 +206,7 @@
 				E009AB5D246FA379004E47AD /* ViewController.swift in Sources */,
 				E009AB5B246FA379004E47AD /* AppDelegate.swift in Sources */,
 				E00871E92471FF93006AD46D /* MyCollectionViewCell.swift in Sources */,
+				E00BA979248B4F1D0036C2F8 /* AddInfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
