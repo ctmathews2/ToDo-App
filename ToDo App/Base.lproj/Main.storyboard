@@ -81,9 +81,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="nextView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fBJ-Zg-UlY"/>
-                                    <segue destination="jI6-x6-sIQ" kind="popoverPresentation" identifier="goToAddScreen" popoverAnchorView="35h-0K-Cza" id="7Bx-Q4-tkU">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="jI6-x6-sIQ" kind="presentation" identifier="goToAddScreen" id="7Bx-Q4-tkU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -102,23 +100,32 @@
         <!--Add Info Controller-->
         <scene sceneID="fyB-Lh-rO0">
             <objects>
-                <viewController id="jI6-x6-sIQ" customClass="AddInfoController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="jI6-x6-sIQ" customClass="AddInfoController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="psY-Fd-yYS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueP-5k-nYY">
-                                <rect key="frame" x="126" y="445" width="163" height="69"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ysc-2G-SCi">
+                                <rect key="frame" x="87" y="246" width="240" height="155"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="goback:" destination="jI6-x6-sIQ" eventType="touchUpInside" id="IiL-gy-GaE"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueP-5k-nYY">
+                                        <rect key="frame" x="39" y="78" width="163" height="69"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goback:" destination="jI6-x6-sIQ" eventType="touchUpInside" id="IiL-gy-GaE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="0.25848137842465752" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="RaW-AK-z1y"/>
                     </view>
                 </viewController>
