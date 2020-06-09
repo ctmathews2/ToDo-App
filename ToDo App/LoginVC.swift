@@ -7,16 +7,32 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func loginPressed(_ sender: Any) {
+        
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) {(user, error) in
+            if error != nil {
+                print(error!)
+            }else{
+                print("Logged In")
+                self.performSegue(withIdentifier: "goToList", sender: self)
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

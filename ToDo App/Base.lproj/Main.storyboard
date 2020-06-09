@@ -26,10 +26,37 @@
                                     <segue destination="rWx-93-chA" kind="show" identifier="goToRegister" id="ttX-tI-XOv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLI-nx-ldo">
+                                <rect key="frame" x="188" y="598" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginPressed:" destination="AZh-IX-Z2N" eventType="touchUpInside" id="Oy2-MB-H9Y"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="goToList" id="syn-4t-DwI"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wsE-Mx-eDT">
+                                <rect key="frame" x="159" y="209" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJb-Wl-Ut6">
+                                <rect key="frame" x="159" y="299" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yeU-pW-TdC"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="wsE-Mx-eDT" id="85s-4v-ob0"/>
+                        <outlet property="passwordTextField" destination="SJb-Wl-Ut6" id="wwX-zZ-bCK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8M-iM-Hmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,4 +230,7 @@
             <point key="canvasLocation" x="1150.7246376811595" y="133.92857142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="syn-4t-DwI"/>
+    </inferredMetricsTieBreakers>
 </document>
