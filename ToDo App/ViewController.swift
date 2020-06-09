@@ -26,11 +26,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         titleBarText.title = "Hello!"
         
         let myDatabase = Database.database().reference().child("TODOs")
-        //let todoDictionary = ["User": Auth.auth().currentUser?.email, "Todo": "Feed Charlie!"]
-        //myDatabase.childByAutoId().setValue(todoDictionary)
-        //myDatabase.child((Auth.auth().currentUser?.email)!).setValue("Figure out what to do")
-        //myDatabase.child((Auth.auth().currentUser?.email)!).setValue("Do More")
-        //myDatabase.child("Chandler").setValue("This is under other user")
+
         let listOfToDo = ["Feed dog", "Feed self", "Do things"]
         myDatabase.child("Chandler").setValue(listOfToDo)
         let delimiter = "@"
@@ -38,6 +34,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         var token = newstr!.components(separatedBy: delimiter)
         let username = token[0]
         myDatabase.child(username).setValue(listOfToDo)
+        
+        /*myDatabase.observe(.value, with: { snapshot in
+            //print("VALUES: ", snapshot.value as Any)
+            for child in snapshot.children{
+                print(child)
+            }
+            
+            
+            
+        })*/
+        print("CHILDS OF USERNAME: ")
+        myDatabase.child(username).observeSingleEvent(of: .value, with: { snapshot in
+            for child in snapshot.children{
+                print(child)
+            }
+            
+        })
+        
         
         super.viewDidLoad()
     }
@@ -48,6 +62,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.items.count
+        // Get database list size
     }
     
     // make a cell for each cell index path
