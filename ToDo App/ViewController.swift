@@ -1,4 +1,6 @@
 import UIKit
+import Firebase
+
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
@@ -22,6 +24,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     override func viewDidLoad() {
         titleBarText.title = "Hello!"
+        
+        let myDatabase = Database.database().reference().child("TODOs")
+        //let todoDictionary = ["User": Auth.auth().currentUser?.email, "Todo": "Feed Charlie!"]
+        //myDatabase.childByAutoId().setValue(todoDictionary)
+        //myDatabase.child((Auth.auth().currentUser?.email)!).setValue("Figure out what to do")
+        //myDatabase.child((Auth.auth().currentUser?.email)!).setValue("Do More")
+        //myDatabase.child("Chandler").setValue("This is under other user")
+        let listOfToDo = ["Feed dog", "Feed self", "Do things"]
+        myDatabase.child("Chandler").setValue(listOfToDo)
+        let delimiter = "@"
+        let newstr = Auth.auth().currentUser?.email
+        var token = newstr!.components(separatedBy: delimiter)
+        let username = token[0]
+        myDatabase.child(username).setValue(listOfToDo)
+        
         super.viewDidLoad()
     }
     
