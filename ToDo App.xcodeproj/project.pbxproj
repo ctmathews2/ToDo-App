@@ -17,6 +17,7 @@
 		E009AB70246FA37B004E47AD /* ToDo_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E009AB6F246FA37B004E47AD /* ToDo_AppTests.swift */; };
 		E00BA979248B4F1D0036C2F8 /* AddInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BA978248B4F1D0036C2F8 /* AddInfoController.swift */; };
 		E056C905248FF58500816CB9 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056C904248FF58500816CB9 /* RegisterVC.swift */; };
+		E056C907248FF7BD00816CB9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E056C906248FF7BD00816CB9 /* LoginVC.swift */; };
 		E05C2B50248F15A800F999ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E05C2B4F248F15A800F999ED /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		E009AB71246FA37B004E47AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E00BA978248B4F1D0036C2F8 /* AddInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoController.swift; sourceTree = "<group>"; };
 		E056C904248FF58500816CB9 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		E056C906248FF7BD00816CB9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		E05C2B4F248F15A800F999ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				E009AB5A246FA379004E47AD /* AppDelegate.swift */,
 				E009AB5C246FA379004E47AD /* ViewController.swift */,
 				E009AB5E246FA379004E47AD /* Main.storyboard */,
+				E056C906248FF7BD00816CB9 /* LoginVC.swift */,
 				E056C904248FF58500816CB9 /* RegisterVC.swift */,
 				E009AB61246FA37A004E47AD /* Assets.xcassets */,
 				E009AB63246FA37A004E47AD /* LaunchScreen.storyboard */,
@@ -280,6 +283,7 @@
 			files = (
 				E009AB5D246FA379004E47AD /* ViewController.swift in Sources */,
 				E009AB5B246FA379004E47AD /* AppDelegate.swift in Sources */,
+				E056C907248FF7BD00816CB9 /* LoginVC.swift in Sources */,
 				E00871E92471FF93006AD46D /* MyCollectionViewCell.swift in Sources */,
 				E00BA979248B4F1D0036C2F8 /* AddInfoController.swift in Sources */,
 				E056C905248FF58500816CB9 /* RegisterVC.swift in Sources */,
