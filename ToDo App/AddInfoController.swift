@@ -8,8 +8,16 @@
 
 import UIKit
 
-class AddInfoController: UIViewController {
+protocol canReceive {
+    func dataReceived(data: String)
+}
 
+class AddInfoController: UIViewController {
+    
+    var delegate : canReceive?
+
+    @IBOutlet weak var addItemField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +26,7 @@ class AddInfoController: UIViewController {
     
 
     @IBAction func goback(_ sender: Any) {
+        delegate?.dataReceived(data: addItemField.text!)
         dismiss(animated: true, completion: nil)
     }
     /*
