@@ -77,6 +77,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - UICollectionViewDelegate protocol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
+        /*let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
+        let position = todoArray.firstIndex(of: cell.myLabel.text!)
+        todoArray.remove(at: position!)
+        myDatabase.child(username).setValue(todoArray)
+        testCollectionView.deleteItems(at: [indexPath])*/
+        print("Selected position: ", indexPath.item)
+        todoArray.remove(at: indexPath.item)
+        myDatabase.child(username).setValue(todoArray)
+        testCollectionView.deleteItems(at: [indexPath])
     }
     
     // change background color when user touches cell
