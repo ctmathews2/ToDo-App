@@ -5,6 +5,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
     var items = ["1", "2"]
+    var todoArray = [String]()
     
     @IBOutlet weak var titleBarText: UINavigationItem!
     
@@ -45,9 +46,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             
         })*/
         print("CHILDS OF USERNAME: ")
-        myDatabase.child(username).observeSingleEvent(of: .value, with: { snapshot in
+        /*myDatabase.child(username).observeSingleEvent(of: .value, with: { snapshot in
             for child in snapshot.children{
                 print(child)
+            }
+        })*/
+        
+        
+        myDatabase.child(username).observeSingleEvent(of: .value, with: { snapshot in
+            
+            //todoArray.append(snapshot.valueInExportFormat())
+            print("HERE ----->",snapshot.value as Any)
+            let testArray = snapshot.value as? Array<String> ?? []
+            for thing in testArray {
+                print("Thing: ", thing)
+            }
+            for child in snapshot.children{
+                print("HERE AGAIN ---->", child as? String ?? "")
             }
             
         })
