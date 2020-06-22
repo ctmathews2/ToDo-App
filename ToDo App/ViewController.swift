@@ -7,7 +7,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     let reuseIdentifier = "cell" // cell identifire in storyboard
     let myDatabase = Database.database().reference().child("TODOs")
     var username = ""
-    var todoArray = [String]()
+    //var todoArray = [String]()
+    var todoArray = [[String:String]]()
     
     // Cell size
     var cellWidth:CGFloat{
@@ -33,7 +34,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         titleBarText.title = "Hello!"
-        
+        //todoDictArray.append(["key 1" : "value 1"])
         super.viewDidLoad()
     }
     
@@ -52,7 +53,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func dataReceived(data: String) {
-        todoArray.append(data)
+        //todoArray.append(data)
+        todoArray.append(["title":data, "info":"info go here"])
+        //testTodoArray[data] = "This is were infor would go!"
         isExpanded.append(false)
         myDatabase.child(username).setValue(todoArray)
         let indexPath = IndexPath(row: todoArray.count - 1, section: 0)
@@ -75,9 +78,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.indexPath = indexPath
         // label.frame = CGRect(x:0,y:0,width:label.intrinsicContentSize.width,height:label.intrinsicContentSize.height)
         cell.myLabel.frame = CGRect(x:0,y:0,width: cellWidth, height: notExpandedHeight)
-        cell.myLabel.text = self.todoArray[indexPath.item]
+        //cell.myLabel.text = self.todoArray[indexPath.item]
+        cell.myLabel.text = self.todoArray[indexPath.item]["title"]
         cell.infoLabel.frame = CGRect(x:0,y:notExpandedHeight,width: cellWidth, height: (expandedHeight - notExpandedHeight))
         cell.infoLabel.text = "Can i see this?"
+        //cell,infoLabel.text\\
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
@@ -131,10 +136,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func updateToDoArray(){
         myDatabase.child(username).observeSingleEvent(of: .value, with: { snapshot in
             
-            let firebaseArray = snapshot.value as? Array<String> ?? []
+            /*let firebaseArray = snapshot.value as? Array<String> ?? []
+            for thing in firebaseArray {
+                self.todoArray.append(thing)
+            }*/
+            let firebaseArray = snapshot.value as? [[String:String]] ?? []
             for thing in firebaseArray {
                 self.todoArray.append(thing)
             }
+            
             self.isExpanded = Array(repeating: false, count: self.todoArray.count)
             self.testCollectionView.reloadData()
         })
