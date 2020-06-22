@@ -9,6 +9,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var username = ""
     var todoArray = [String]()
     
+    // Cell size
+    var cellWidth:CGFloat{
+        return testCollectionView.frame.size.width
+    }
+    var expandedHeight : CGFloat = 200
+    var notExpandedHeight : CGFloat = 50
+    var isExpanded = [Bool]()
+    
     // Connections
     @IBOutlet weak var titleBarText: UINavigationItem!
     @IBOutlet weak var testCollectionView: UICollectionView!
@@ -25,6 +33,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         titleBarText.title = "Hello!"
+        
         super.viewDidLoad()
     }
     
@@ -33,9 +42,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         performSegue(withIdentifier: "goToAddScreen", sender: self)
     }
     
-    @IBAction func nextView(_ sender: Any) {
-        performSegue(withIdentifier: "goToAddScreen", sender: self)
-    }
     
     // Segue and Protocols
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,6 +53,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func dataReceived(data: String) {
         todoArray.append(data)
+        isExpanded.append(false)
         myDatabase.child(username).setValue(todoArray)
         let indexPath = IndexPath(row: todoArray.count - 1, section: 0)
         testCollectionView.insertItems(at: [indexPath])
@@ -56,7 +63,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - UICollectionViewDataSource protocol
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Size: ",todoArray.count)
+        //print("Size: ",todoArray.count)
         return self.todoArray.count
     }
     
@@ -65,7 +72,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        cell.indexPath = indexPath
+        // label.frame = CGRect(x:0,y:0,width:label.intrinsicContentSize.width,height:label.intrinsicContentSize.height)
+        cell.myLabel.frame = CGRect(x:0,y:0,width: cellWidth, height: notExpandedHeight)
         cell.myLabel.text = self.todoArray[indexPath.item]
+        cell.infoLabel.frame = CGRect(x:0,y:notExpandedHeight,width: cellWidth, height: (expandedHeight - notExpandedHeight))
+        cell.infoLabel.text = "Can i see this?"
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
@@ -75,17 +87,32 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - UICollectionViewDelegate protocol
+    // test for size cell
+    /*func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if isExpanded[indexPath.row] == true{
+            return CGSize(width: cellWidth, height: expandedHeight)
+        }else{
+            print("GOT HERE")
+            return CGSize(width: cellWidth, height: notExpandedHeight)
+        }
+        
+    }*/
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
-        /*let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
-        let position = todoArray.firstIndex(of: cell.myLabel.text!)
-        todoArray.remove(at: position!)
-        myDatabase.child(username).setValue(todoArray)
-        testCollectionView.deleteItems(at: [indexPath])*/
-        print("Selected position: ", indexPath.item)
+        
+        isExpanded[indexPath.row] = !isExpanded[indexPath.row]
+        UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+            self.testCollectionView.reloadItems(at: [indexPath])
+        }, completion: { success in
+            //print("success")
+        })
+        
+        /*print("Selected position: ", indexPath.item)
         todoArray.remove(at: indexPath.item)
         myDatabase.child(username).setValue(todoArray)
-        testCollectionView.deleteItems(at: [indexPath])
+        testCollectionView.deleteItems(at: [indexPath])*/
     }
     
     // change background color when user touches cell
@@ -108,9 +135,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             for thing in firebaseArray {
                 self.todoArray.append(thing)
             }
+            self.isExpanded = Array(repeating: false, count: self.todoArray.count)
             self.testCollectionView.reloadData()
         })
     }
     
+    
+}
+
+extension ViewController:UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if isExpanded[indexPath.row] == true{
+            return CGSize(width: cellWidth, height: expandedHeight)
+        }else{
+            return CGSize(width: cellWidth, height: notExpandedHeight)
+        }
+        
+    }
     
 }
