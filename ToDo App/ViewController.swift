@@ -12,7 +12,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // Cell size
     var cellWidth:CGFloat{
-        return testCollectionView.frame.size.width
+        return testCollectionView.frame.size.width * 0.75
     }
     var expandedHeight : CGFloat = 200
     var notExpandedHeight : CGFloat = 50
@@ -21,6 +21,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // Connections
     @IBOutlet weak var titleBarText: UINavigationItem!
     @IBOutlet weak var testCollectionView: UICollectionView!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     // Initializers
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +35,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         titleBarText.title = "Hello!"
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        //self.navigationController?.navigationBar.
         //todoDictArray.append(["key 1" : "value 1"])
         super.viewDidLoad()
     }
