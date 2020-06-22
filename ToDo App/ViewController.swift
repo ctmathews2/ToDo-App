@@ -52,9 +52,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
-    func dataReceived(data: String) {
+    func dataReceived(data: String, info: String) {
         //todoArray.append(data)
-        todoArray.append(["title":data, "info":"info go here"])
+        todoArray.append(["title":data, "info":info])
         //testTodoArray[data] = "This is were infor would go!"
         isExpanded.append(false)
         myDatabase.child(username).setValue(todoArray)
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         //cell.myLabel.text = self.todoArray[indexPath.item]
         cell.myLabel.text = self.todoArray[indexPath.item]["title"]
         cell.infoLabel.frame = CGRect(x:0,y:notExpandedHeight,width: cellWidth, height: (expandedHeight - notExpandedHeight))
-        cell.infoLabel.text = "Can i see this?"
+        cell.infoLabel.text = self.todoArray[indexPath.item]["info"]
         //cell,infoLabel.text\\
         cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         cell.layer.borderColor = UIColor.black.cgColor
