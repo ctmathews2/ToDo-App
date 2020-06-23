@@ -17,18 +17,23 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
     @IBAction func loginPressed(_ sender: Any) {
-        
+        print("I AM GETTING HERE")
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) {(user, error) in
             if error != nil {
                 print(error!)
+                print("ERROR HERE")
             }else{
-                print("Logged In")
-                self.performSegue(withIdentifier: "goToList", sender: self)
+                print("I DID NOT GET AN ERROR")
+                if(user != nil){
+                    print("Logged In")
+                    self.performSegue(withIdentifier: "goToList", sender: self)
+                }else{
+                    print("Didnt log in")
+                }
             }
         }
     }

@@ -56,7 +56,6 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginPressed:" destination="AZh-IX-Z2N" eventType="touchUpInside" id="Oy2-MB-H9Y"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="goToList" id="syn-4t-DwI"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wsE-Mx-eDT">
@@ -80,6 +79,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="wsE-Mx-eDT" id="85s-4v-ob0"/>
                         <outlet property="passwordTextField" destination="SJb-Wl-Ut6" id="wwX-zZ-bCK"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToList" id="DeK-Qh-9ks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8M-iM-Hmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -154,6 +154,11 @@
                                 <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Title" id="LvJ-ow-H5A">
+                                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="9eI-R5-VIf">
+                                            <connections>
+                                                <action selector="signOutButton:" destination="BYZ-38-t0r" id="tVm-6k-PgT"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lV8-lK-sHX">
                                             <connections>
                                                 <action selector="addItem:" destination="BYZ-38-t0r" id="Zn9-N0-kF0"/>
@@ -277,6 +282,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="syn-4t-DwI"/>
+        <segue reference="DeK-Qh-9ks"/>
     </inferredMetricsTieBreakers>
 </document>

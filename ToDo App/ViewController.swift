@@ -26,14 +26,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // Initializers
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let delimiter = "@"
-        let newstr = Auth.auth().currentUser?.email
-        var token = newstr!.components(separatedBy: delimiter)
-        username = token[0]
-        updateToDoArray()
+        
     }
     
     override func viewDidLoad() {
+        let delimiter = "@"
+        print(Auth.auth().currentUser != nil)
+        let newstr = Auth.auth().currentUser?.email
+        //print("USER: " + Auth.auth().currentUser)
+        var token = newstr!.components(separatedBy: delimiter)
+        username = token[0]
+        updateToDoArray()
         titleBarText.title = "Hello!"
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -45,6 +48,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // Buttons
     @IBAction func addItem(_ sender: Any) {
         performSegue(withIdentifier: "goToAddScreen", sender: self)
+    }
+    @IBAction func signOutButton(_ sender: Any) {
+       /* let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            performSegueToReturnBack()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }*/
+        
     }
     
     
@@ -169,3 +182,15 @@ extension ViewController:UICollectionViewDelegateFlowLayout{
     }
     
 }
+
+extension UIViewController {
+    func performSegueToReturnBack()  {
+        if let nav = self.navigationController {
+            nav.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+
