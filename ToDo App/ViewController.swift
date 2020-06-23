@@ -50,13 +50,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         performSegue(withIdentifier: "goToAddScreen", sender: self)
     }
     @IBAction func signOutButton(_ sender: Any) {
-       /* let firebaseAuth = Auth.auth()
+       let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
             performSegueToReturnBack()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
-        }*/
+        }
         
     }
     
