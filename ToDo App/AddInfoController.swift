@@ -12,27 +12,55 @@ protocol canReceive {
     func dataReceived(data: String, info: String)
 }
 
-class AddInfoController: UIViewController {
+class AddInfoController: UIViewController, UITextViewDelegate {
     
     var delegate : canReceive?
+    
 
     @IBOutlet weak var addItemField: UITextField!
-    @IBOutlet weak var addInfoField: UITextField!
+    //@IBOutlet weak var addInfoField: UITextField!
     @IBOutlet weak var spaceView: UIView!
+    @IBOutlet weak var buttonIdentifier: UIButton!
+    @IBOutlet weak var addInfoTextView: UITextView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addInfoTextView.delegate = self
         spaceView.layer.cornerRadius = 10
         spaceView.layer.borderWidth = 10
+        buttonIdentifier.layer.masksToBounds = true;
+        
+        addInfoTextView.textColor = .lightGray
+        addInfoTextView.text = "Description"
+        addInfoTextView.textAlignment = .center
         //spaceView.layer.borderColor = CGColo
         // Do any additional setup after loading the view.
     }
     
 
     @IBAction func goback(_ sender: Any) {
-        delegate?.dataReceived(data: addItemField.text!, info: addInfoField.text!)
+        // What if no text?
+        delegate?.dataReceived(data: addItemField.text!, info: addInfoTextView.text!)
         dismiss(animated: true, completion: nil)
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if addInfoTextView.textColor == UIColor.lightGray {
+            addInfoTextView.text = nil
+            addInfoTextView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if addInfoTextView.text.isEmpty {
+            addInfoTextView.text = "Description"
+            addInfoTextView.textColor = UIColor.lightGray
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
