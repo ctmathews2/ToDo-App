@@ -3,10 +3,14 @@ import Firebase
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, canReceive {
     
+    static var sharedInstance = ViewController()
     // Global Variables
     let reuseIdentifier = "cell" // cell identifire in storyboard
     let myDatabase = Database.database().reference().child("TODOs")
     var username = ""
+    //var position: IndexPath?
+    
+    
     //var todoArray = [String]()
     var todoArray = [[String:String]]()
     
@@ -46,6 +50,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.navigationController?.navigationBar.shadowImage = UIImage()
         //self.navigationController?.navigationBar.
         //todoDictArray.append(["key 1" : "value 1"])
+        ViewController.sharedInstance = self
         super.viewDidLoad()
     }
     
@@ -134,7 +139,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }, completion: { success in
             //print("success")
         })
-        
+        //position = indexPath
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
+        //print(cell.myLabel.text!)
+        //cell.testButton(an)
         /*print("Selected position: ", indexPath.item)
         todoArray.remove(at: indexPath.item)
         myDatabase.child(username).setValue(todoArray)

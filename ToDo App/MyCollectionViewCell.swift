@@ -13,4 +13,14 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var infoLabel: UILabel!
     public var indexPath:IndexPath!
     
+    @IBAction func testButton(_ sender: Any) {
+        //let vcInstance = ViewController()
+        //print(ViewController.sharedInstance.todoArray)
+        //print(vcInstance.todoArray)
+        //ViewController.sharedInstance.todoArray.rem
+        //print("Selected position: ", indexPath.item)
+         ViewController.sharedInstance.todoArray.remove(at: indexPath.item)
+         ViewController.sharedInstance.myDatabase.child(ViewController.sharedInstance.username).setValue(ViewController.sharedInstance.todoArray)
+         ViewController.sharedInstance.testCollectionView.deleteItems(at: [indexPath])
+    }
 }
