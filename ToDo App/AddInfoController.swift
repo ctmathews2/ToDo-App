@@ -18,10 +18,13 @@ class AddInfoController: UIViewController {
 
     @IBOutlet weak var addItemField: UITextField!
     @IBOutlet weak var addInfoField: UITextField!
+    @IBOutlet weak var spaceView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        spaceView.layer.cornerRadius = 10
+        spaceView.layer.borderWidth = 10
+        //spaceView.layer.borderColor = CGColo
         // Do any additional setup after loading the view.
     }
     

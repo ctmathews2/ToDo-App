@@ -34,7 +34,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print(Auth.auth().currentUser != nil)
         let newstr = Auth.auth().currentUser?.email
         //print("USER: " + Auth.auth().currentUser)
+        //myDatabase.child(newstr!).setValue("Hello World!")
         var token = newstr!.components(separatedBy: delimiter)
+        for tok in token{
+            print(tok)
+        }
         username = token[0]
         updateToDoArray()
         titleBarText.title = "Hello!"
