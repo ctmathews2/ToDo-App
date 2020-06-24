@@ -12,4 +12,5 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     public var indexPath:IndexPath!
+    
 }

@@ -28,8 +28,8 @@ class AddInfoController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         addInfoTextView.delegate = self
-        spaceView.layer.cornerRadius = 10
-        spaceView.layer.borderWidth = 10
+        spaceView.layer.cornerRadius = 1
+        spaceView.layer.borderWidth = 1
         buttonIdentifier.layer.masksToBounds = true;
         
         addInfoTextView.textColor = .lightGray
@@ -43,6 +43,10 @@ class AddInfoController: UIViewController, UITextViewDelegate {
     @IBAction func goback(_ sender: Any) {
         // What if no text?
         delegate?.dataReceived(data: addItemField.text!, info: addInfoTextView.text!)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelAdd(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
