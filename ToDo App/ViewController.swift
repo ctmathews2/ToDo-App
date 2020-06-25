@@ -113,7 +113,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.myLabel.frame = CGRect(x:0,y:0,width: cellWidth, height: notExpandedHeight)
         //cell.myLabel.text = self.todoArray[indexPath.item]
         cell.myLabel.text = self.todoArray[indexPath.item]["title"]
-        cell.infoLabel.frame = CGRect(x:0,y:notExpandedHeight,width: cellWidth, height: 200)
+        cell.infoLabel.frame = CGRect(x:0,y:notExpandedHeight,width: cellWidth, height: 150)
         cell.infoLabel.text = self.todoArray[indexPath.item]["info"]
         
         cell.testButtonOutlet.frame = CGRect(x:0,y:200,width: cellWidth, height: 40)
@@ -224,5 +224,6 @@ extension UIViewController {
         }
     }
 }
+
 
 
