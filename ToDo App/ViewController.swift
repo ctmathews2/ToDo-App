@@ -13,12 +13,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     //var todoArray = [String]()
     var todoArray = [[String:String]]()
-    
+    var completedArray = [Bool]()
     // Cell size
     var cellWidth:CGFloat{
         return testCollectionView.frame.size.width * 0.75
     }
-    var expandedHeight : CGFloat = 200
+    var expandedHeight : CGFloat = 240
     var notExpandedHeight : CGFloat = 50
     var isExpanded = [Bool]()
     
@@ -45,7 +45,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         username = token[0]
         updateToDoArray()
-        titleBarText.title = "Hello!"
+        
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let formattedDate = format.string(from: date)
+        
+        titleBarText.title = formattedDate
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         //self.navigationController?.navigationBar.
@@ -83,6 +89,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         todoArray.append(["title":data, "info":info])
         //testTodoArray[data] = "This is were infor would go!"
         isExpanded.append(false)
+        completedArray.append(false)
         myDatabase.child(username).setValue(todoArray)
         let indexPath = IndexPath(row: todoArray.count - 1, section: 0)
         testCollectionView.insertItems(at: [indexPath])
@@ -106,10 +113,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.myLabel.frame = CGRect(x:0,y:0,width: cellWidth, height: notExpandedHeight)
         //cell.myLabel.text = self.todoArray[indexPath.item]
         cell.myLabel.text = self.todoArray[indexPath.item]["title"]
-        cell.infoLabel.frame = CGRect(x:0,y:notExpandedHeight,width: cellWidth, height: (expandedHeight - notExpandedHeight))
+        cell.infoLabel.frame = CGRect(x:0,y:notExpandedHeight,width: cellWidth, height: 200)
         cell.infoLabel.text = self.todoArray[indexPath.item]["info"]
+        
+        cell.testButtonOutlet.frame = CGRect(x:0,y:200,width: cellWidth, height: 40)
+        
+        
+        
+        
         //cell,infoLabel.text\\
-        cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+        //cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+        if(completedArray[indexPath.row] == true){
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: cell.myLabel.text!)
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            cell.myLabel.attributedText = attributeString
+        }
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 8
@@ -129,6 +147,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         
     }*/
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
@@ -175,6 +194,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             }
             
             self.isExpanded = Array(repeating: false, count: self.todoArray.count)
+            self.completedArray = Array(repeating: false, count: self.todoArray.count)
             self.testCollectionView.reloadData()
         })
     }
