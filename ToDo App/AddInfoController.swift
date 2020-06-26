@@ -54,7 +54,7 @@ class AddInfoController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if addInfoTextView.textColor == UIColor.lightGray {
             addInfoTextView.text = nil
-            addInfoTextView.textColor = UIColor.black
+            addInfoTextView.textColor = UIColor.white
         }
     }
     

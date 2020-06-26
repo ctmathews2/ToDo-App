@@ -307,21 +307,6 @@
                                             <action selector="goback:" destination="jI6-x6-sIQ" eventType="touchUpInside" id="IiL-gy-GaE"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Name" textAlignment="center" minimumFontSize="17" id="jfe-id-8gC">
-                                        <rect key="frame" x="39" y="19" width="161" height="47"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="1Nj-57-Nmb">
-                                        <rect key="frame" x="39" y="81" width="161" height="176"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Gk-7z-7f3">
                                         <rect key="frame" x="0.0" y="271" width="120" height="53"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -333,13 +318,23 @@
                                             <action selector="cancelAdd:" destination="jI6-x6-sIQ" eventType="touchUpInside" id="rLs-vr-rLu"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rzi-Hk-Gbi">
+                                        <rect key="frame" x="26" y="65" width="189" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oDV-Al-GQ4">
+                                        <rect key="frame" x="26" y="13" width="189" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="ueP-5k-nYY" firstAttribute="top" secondItem="1Nj-57-Nmb" secondAttribute="bottom" constant="14" id="8Rk-SW-pIo"/>
-                                    <constraint firstItem="1Nj-57-Nmb" firstAttribute="top" secondItem="jfe-id-8gC" secondAttribute="bottom" constant="15" id="FoI-26-efR"/>
-                                    <constraint firstItem="7Gk-7z-7f3" firstAttribute="top" secondItem="1Nj-57-Nmb" secondAttribute="bottom" constant="14" id="pjm-c4-3K8"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.16863762842465754" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -347,8 +342,8 @@
                         <viewLayoutGuide key="safeArea" id="RaW-AK-z1y"/>
                     </view>
                     <connections>
-                        <outlet property="addInfoTextView" destination="1Nj-57-Nmb" id="foM-rz-7hR"/>
-                        <outlet property="addItemField" destination="jfe-id-8gC" id="c2J-nk-UwY"/>
+                        <outlet property="addInfoTextView" destination="Rzi-Hk-Gbi" id="4mh-Za-wMH"/>
+                        <outlet property="addItemField" destination="oDV-Al-GQ4" id="tKq-Dw-Ccm"/>
                         <outlet property="buttonIdentifier" destination="ueP-5k-nYY" id="SSt-qB-w2u"/>
                         <outlet property="spaceView" destination="ysc-2G-SCi" id="YDk-jb-zuz"/>
                     </connections>
