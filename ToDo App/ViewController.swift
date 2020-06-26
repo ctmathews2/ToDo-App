@@ -8,12 +8,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     let reuseIdentifier = "cell" // cell identifire in storyboard
     let myDatabase = Database.database().reference().child("TODOs")
     var username = ""
-    //var position: IndexPath?
-    
-    
-    //var todoArray = [String]()
     var todoArray = [[String:String]]()
     var completedArray = [Bool]()
+    
     // Cell size
     var cellWidth:CGFloat{
         return testCollectionView.frame.size.width * 0.75
@@ -39,7 +36,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let newstr = Auth.auth().currentUser?.email
         //print("USER: " + Auth.auth().currentUser)
         //myDatabase.child(newstr!).setValue("Hello World!")
-        var token = newstr!.components(separatedBy: delimiter)
+        let token = newstr!.components(separatedBy: delimiter)
         for tok in token{
             print(tok)
         }
@@ -48,7 +45,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let date = Date()
         let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: date)
         
         titleBarText.title = formattedDate
@@ -153,11 +150,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // handle tap events
         
         isExpanded[indexPath.row] = !isExpanded[indexPath.row]
-        UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+        /*UIView.animate(withDuration: 1.5, delay: 1.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.3, options: UIView.AnimationOptions.curveLinear, animations: {
             self.testCollectionView.reloadItems(at: [indexPath])
         }, completion: { success in
             //print("success")
-        })
+        })*/
+        self.testCollectionView.reloadItems(at: [indexPath])
         //position = indexPath
         //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
         //print(cell.myLabel.text!)
@@ -222,6 +220,16 @@ extension UIViewController {
         } else {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

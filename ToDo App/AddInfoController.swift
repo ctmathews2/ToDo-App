@@ -35,6 +35,7 @@ class AddInfoController: UIViewController, UITextViewDelegate {
         addInfoTextView.textColor = .lightGray
         addInfoTextView.text = "Description"
         addInfoTextView.textAlignment = .center
+        self.hideKeyboardWhenTappedAround()
         //spaceView.layer.borderColor = CGColo
         // Do any additional setup after loading the view.
     }

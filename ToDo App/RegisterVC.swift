@@ -17,7 +17,7 @@ class RegisterVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboardWhenTappedAround() 
         // Do any additional setup after loading the view.
     }
     
@@ -25,7 +25,10 @@ class RegisterVC: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-
+    @IBAction func cancelRegister(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -40,7 +43,7 @@ class RegisterVC: UIViewController {
             if error != nil {
                 print(error!)
             }else{
-                print("Registered")
+                //print("Registered")
                 self.performSegue(withIdentifier: "goToList", sender: self)
             }
         }
