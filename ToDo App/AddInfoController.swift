@@ -32,7 +32,7 @@ class AddInfoController: UIViewController, UITextViewDelegate {
         spaceView.layer.borderWidth = 1
         buttonIdentifier.layer.masksToBounds = true;
         
-        addInfoTextView.textColor = .lightGray
+        addInfoTextView.textColor = .darkGray
         addInfoTextView.text = "Description"
         addInfoTextView.textAlignment = .center
         self.hideKeyboardWhenTappedAround()
@@ -52,7 +52,7 @@ class AddInfoController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if addInfoTextView.textColor == UIColor.lightGray {
+        if addInfoTextView.textColor == UIColor.darkGray {
             addInfoTextView.text = nil
             addInfoTextView.textColor = UIColor.white
         }
@@ -61,7 +61,7 @@ class AddInfoController: UIViewController, UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if addInfoTextView.text.isEmpty {
             addInfoTextView.text = "Description"
-            addInfoTextView.textColor = UIColor.lightGray
+            addInfoTextView.textColor = UIColor.darkGray
         }
     }
     
