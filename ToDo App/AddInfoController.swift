@@ -16,14 +16,10 @@ class AddInfoController: UIViewController, UITextViewDelegate {
     
     var delegate : canReceive?
     
-
     @IBOutlet weak var addItemField: UITextField!
-    //@IBOutlet weak var addInfoField: UITextField!
     @IBOutlet weak var spaceView: UIView!
     @IBOutlet weak var buttonIdentifier: UIButton!
     @IBOutlet weak var addInfoTextView: UITextView!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +32,6 @@ class AddInfoController: UIViewController, UITextViewDelegate {
         addInfoTextView.text = "Description"
         addInfoTextView.textAlignment = .center
         self.hideKeyboardWhenTappedAround()
-        //spaceView.layer.borderColor = CGColo
-        // Do any additional setup after loading the view.
     }
     
 

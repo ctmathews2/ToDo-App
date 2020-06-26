@@ -27,15 +27,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // Initializers
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     override func viewDidLoad() {
         let delimiter = "@"
         print(Auth.auth().currentUser != nil)
         let newstr = Auth.auth().currentUser?.email
-        //print("USER: " + Auth.auth().currentUser)
-        //myDatabase.child(newstr!).setValue("Hello World!")
         let token = newstr!.components(separatedBy: delimiter)
         for tok in token{
             print(tok)
@@ -51,8 +48,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         titleBarText.title = formattedDate
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        //self.navigationController?.navigationBar.
-        //todoDictArray.append(["key 1" : "value 1"])
         ViewController.sharedInstance = self
         super.viewDidLoad()
     }
@@ -69,7 +64,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-        
     }
     
     
@@ -82,9 +76,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func dataReceived(data: String, info: String) {
-        //todoArray.append(data)
         todoArray.append(["title":data, "info":info])
-        //testTodoArray[data] = "This is were infor would go!"
         isExpanded.append(false)
         completedArray.append(false)
         myDatabase.child(username).setValue(todoArray)
@@ -96,7 +88,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - UICollectionViewDataSource protocol
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //print("Size: ",todoArray.count)
         return self.todoArray.count
     }
     
@@ -114,9 +105,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.infoLabel.text = self.todoArray[indexPath.item]["info"]
         
         cell.testButtonOutlet.frame = CGRect(x:0,y:200,width: cellWidth, height: 40)
-        
-        
-        
         
         //cell,infoLabel.text\\
         //cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
@@ -150,20 +138,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // handle tap events
         
         isExpanded[indexPath.row] = !isExpanded[indexPath.row]
-        /*UIView.animate(withDuration: 1.5, delay: 1.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.3, options: UIView.AnimationOptions.curveLinear, animations: {
-            self.testCollectionView.reloadItems(at: [indexPath])
-        }, completion: { success in
-            //print("success")
-        })*/
         self.testCollectionView.reloadItems(at: [indexPath])
-        //position = indexPath
-        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
-        //print(cell.myLabel.text!)
-        //cell.testButton(an)
-        /*print("Selected position: ", indexPath.item)
-        todoArray.remove(at: indexPath.item)
-        myDatabase.child(username).setValue(todoArray)
-        testCollectionView.deleteItems(at: [indexPath])*/
+
     }
     
     // change background color when user touches cell
